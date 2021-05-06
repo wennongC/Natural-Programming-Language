@@ -1,7 +1,7 @@
-import NaturalProgLang.CodeDialog;
-import NaturalProgLang.lexer.Lexer;
-import NaturalProgLang.lexer.Token;
-import NaturalProgLang.parser.ParseException;
+import NPLang.CodeDialog;
+import NPLang.lexer.Lexer;
+import NPLang.lexer.Token;
+import NPLang.parser.ParseException;
 
 public class LexerRunner {
     public static void main(String[] args) throws ParseException {

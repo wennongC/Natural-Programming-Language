@@ -1,4 +1,4 @@
-package NaturalProgLang.parser;
+package NPLang.parser;
 
 
 import java.util.HashMap;
@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.lang.reflect.Method;
 import java.lang.reflect.Constructor;
 
-import NaturalProgLang.lexer.Lexer;
-import NaturalProgLang.lexer.Token;
-import NaturalProgLang.ast.basic.*;
+import NPLang.lexer.Lexer;
+import NPLang.lexer.Token;
+import NPLang.ast.basic.*;
 
 public class Parser {
     protected static abstract class Element {
@@ -104,6 +104,28 @@ public class Parser {
             return test(lexer.peek(0));
         }
         protected abstract boolean test(Token t);
+    }
+
+    protected static class TypeToken extends AToken {
+        HashSet<String> reserved;
+        protected TypeToken(Class<? extends ASTLeaf> type, HashSet<String> r) {
+            super(type);
+            reserved = r != null ? r : new HashSet<String>();
+        }
+        protected boolean test(Token t) {
+            return t.isType() && !reserved.contains(t.getText());
+        }
+    }
+
+    protected static class OperatorToken extends AToken {
+        HashSet<String> reserved;
+        protected OperatorToken(Class<? extends ASTLeaf> type, HashSet<String> r) {
+            super(type);
+            reserved = r != null ? r : new HashSet<String>();
+        }
+        protected boolean test(Token t) {
+            return t.isOperator() && !reserved.contains(t.getText());
+        }
     }
 
     protected static class IdToken extends AToken {
@@ -325,13 +347,27 @@ public class Parser {
         factory = Factory.getForASTList(clazz);
         return this;
     }
-    public Parser number() {
-        return number(null);
+
+    public Parser typeName(HashSet<String> reserved) {
+        return typeName(null, reserved);
     }
-    public Parser number(Class<? extends ASTLeaf> clazz) {
-        elements.add(new NumToken(clazz));
+    public Parser typeName(Class<? extends ASTLeaf> clazz,
+                             HashSet<String> reserved)
+    {
+        elements.add(new TypeToken(clazz, reserved));
         return this;
     }
+
+    public Parser operator(HashSet<String> reserved) {
+        return operator(null, reserved);
+    }
+    public Parser operator(Class<? extends ASTLeaf> clazz,
+                           HashSet<String> reserved)
+    {
+        elements.add(new OperatorToken(clazz, reserved));
+        return this;
+    }
+
     public Parser identifier(HashSet<String> reserved) {
         return identifier(null, reserved);
     }
@@ -339,6 +375,15 @@ public class Parser {
                              HashSet<String> reserved)
     {
         elements.add(new IdToken(clazz, reserved));
+        return this;
+    }
+
+
+    public Parser number() {
+        return number(null);
+    }
+    public Parser number(Class<? extends ASTLeaf> clazz) {
+        elements.add(new NumToken(clazz));
         return this;
     }
     public Parser string() {

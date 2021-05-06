@@ -1,6 +1,6 @@
-package NaturalProgLang.ast.basic;
+package NPLang.ast.basic;
 
-import NaturalProgLang.lexer.Token;
+import NPLang.lexer.Token;
 
 import java.util.ArrayList;
 import java.util.Iterator;

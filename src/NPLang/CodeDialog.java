@@ -1,4 +1,4 @@
-package NaturalProgLang;
+package NPLang;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

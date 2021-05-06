@@ -1,11 +1,13 @@
-package NaturalProgLang.lexer;
+package NPLang.lexer;
 
-import NaturalProgLang.parser.ParseException;
+import NPLang.parser.ParseException;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,9 +20,19 @@ public class Lexer {
     private boolean hasMore;
     private LineNumberReader reader;
 
+    public enum ReservedTypes {
+        TYPE, OPERATOR
+    }
+    private HashMap<ReservedTypes, String[]> reserved;   // Reserved words for specific usage
+
     public Lexer(Reader r) {
         hasMore = true;
         reader = new LineNumberReader(r);
+        reserved = new HashMap<>();
+    }
+
+    public void addNewType(ReservedTypes type, String[] typeValues) {
+        reserved.put(type, typeValues);
     }
 
     public Token read() throws ParseException {
@@ -84,10 +96,72 @@ public class Lexer {
                     token = new NumToken(lineNo, tokenIdx, Integer.parseInt(m));
                 else if (matcher.group(4) != null)
                     token = new StrToken(lineNo, tokenIdx, toStringLiteral(m));
-                else
-                    token = new IdToken(lineNo, tokenIdx, m);
+                else {
+                    String[] types = reserved.get(ReservedTypes.TYPE);
+                    String[] operators = reserved.get(ReservedTypes.OPERATOR);
+
+                    if (Arrays.asList(types).contains(m)) {
+                        token = new TypeToken(lineNo, tokenIdx, m);
+                    } else if (Arrays.asList(operators).contains(m)) {
+                        token = new OperatorToken(lineNo, tokenIdx, m);
+                    } else {
+                        token = new IdToken(lineNo, tokenIdx, m);
+                    }
+                }
                 queue.add(token);
             }
+    }
+
+    protected static class TypeToken extends Token {
+        private String text;
+        protected TypeToken(int line, int idx, String typeName) {
+            super(line, idx);
+            text = typeName;
+        }
+        public boolean isType() { return true; }
+        public String getText() { return text; }
+    }
+
+    protected static class OperatorToken extends Token {
+        private String text;
+        protected OperatorToken(int line, int idx, String opName) {
+            super(line, idx);
+            text = opName;
+        }
+        public boolean isOperator() { return true; }
+        public String getText() { return text; }
+    }
+
+    protected static class IdToken extends Token {
+        private String text;
+        protected IdToken(int line, int idx, String id) {
+            super(line, idx);
+            text = id;
+        }
+        public boolean isIdentifier() { return true; }
+        public String getText() { return text; }
+    }
+
+    protected static class NumToken extends Token {
+        private int value;
+
+        protected NumToken(int line, int idx, int v) {
+            super(line, idx);
+            value = v;
+        }
+        public boolean isNumber() { return true; }
+        public String getText() { return Integer.toString(value); }
+        public int getNumber() { return value; }
+    }
+
+    protected static class StrToken extends Token {
+        private String literal;
+        StrToken(int line, int idx, String str) {
+            super(line, idx);
+            literal = str;
+        }
+        public boolean isString() { return true; }
+        public String getText() { return literal; }
     }
 
     protected String toStringLiteral(String s) {
@@ -109,35 +183,4 @@ public class Lexer {
         return sb.toString();
     }
 
-    protected static class NumToken extends Token {
-        private int value;
-
-        protected NumToken(int line, int idx, int v) {
-            super(line, idx);
-            value = v;
-        }
-        public boolean isNumber() { return true; }
-        public String getText() { return Integer.toString(value); }
-        public int getNumber() { return value; }
-    }
-
-    protected static class IdToken extends Token {
-        private String text;
-        protected IdToken(int line, int idx, String id) {
-            super(line, idx);
-            text = id;
-        }
-        public boolean isIdentifier() { return true; }
-        public String getText() { return text; }
-    }
-
-    protected static class StrToken extends Token {
-        private String literal;
-        StrToken(int line, int idx, String str) {
-            super(line, idx);
-            literal = str;
-        }
-        public boolean isString() { return true; }
-        public String getText() { return literal; }
-    }
 }

@@ -1,6 +1,6 @@
-package NaturalProgLang.lexer;
+package NPLang.lexer;
 
-import NaturalProgLang.NPLangException;
+import NPLang.NPLangException;
 
 public abstract class Token {
     public static final Token EOF = new Token(-1, 0){};    // end of file
@@ -15,6 +15,8 @@ public abstract class Token {
     public int getLineNumber() { return lineNumber; }
     public int getTokenIdx() { return tokenIdx; }
 
+    public boolean isType() { return false; }
+    public boolean isOperator() { return false; }
     public boolean isIdentifier() { return false; }
     public boolean isNumber() { return false; }
     public boolean isString() { return false; }

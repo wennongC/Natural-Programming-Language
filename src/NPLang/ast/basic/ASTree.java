@@ -1,4 +1,4 @@
-package NaturalProgLang.ast.basic;
+package NPLang.ast.basic;
 
 import java.util.Iterator;
 
