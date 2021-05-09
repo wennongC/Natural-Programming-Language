@@ -35,11 +35,11 @@ public class BasicParser {
 
     // assignment: "assign" pronoun ("to" | "with") pronoun
     Parser assignment = rule(Assignment.class)
-            .sep("assign").ast(pronoun).identifier(Keyword.class, reserved).ast(pronoun);
+            .sep("assign").ast(pronoun).particle(Particle.class, reserved).ast(pronoun);
 
     // calculation: OP pronoun [("by" | "and") pronoun]
     Parser calculation = rule(Calculation.class).operator(Operator.class, reserved)
-            .ast(pronoun).option(rule().identifier(Keyword.class, reserved).ast(pronoun));
+            .ast(pronoun).option(rule().particle(Particle.class, reserved).ast(pronoun));
 
     // statement: declaration | assignment | calculation
     Parser statement = rule(Statement.class).or(
@@ -56,7 +56,7 @@ public class BasicParser {
             );
 
     // program: {sentence ("." | EOL)}
-    Parser program = rule().or(sentence, rule(NullStmnt.class)).sep(".", Token.EOL);;
+    Parser program = rule().or(sentence, rule(NullStmnt.class)).sep(".", Token.EOL);
 
     public BasicParser(Lexer lexer) {
         reserved.add(",");
@@ -64,18 +64,25 @@ public class BasicParser {
         reserved.add(Token.EOL);
 
         String[] allTypes = {
-                "integer",
-                "string",
+                Type.integer,
+                Type.string,
         };
-        String[] allOps = {
-                "add",
-                "subtract",
-                "multiply",
-                "divide"
+        String[] allOperators = {
+                Operator.add,
+                Operator.subtract,
+                Operator.multiply,
+                Operator.divide
+        };
+        String[] allParticles = {
+                Particle.to,
+                Particle.with,
+                Particle.by,
+                Particle.and
         };
 
         lexer.addNewType(ReservedTypes.TYPE, allTypes);
-        lexer.addNewType(ReservedTypes.OPERATOR, allOps);
+        lexer.addNewType(ReservedTypes.OPERATOR, allOperators);
+        lexer.addNewType(ReservedTypes.PARTICLE, allParticles);
     }
     public ASTree parse(Lexer lexer) throws ParseException {
         return program.parse(lexer);

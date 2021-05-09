@@ -21,8 +21,9 @@ public class Lexer {
     private LineNumberReader reader;
 
     public enum ReservedTypes {
-        TYPE, OPERATOR
+        TYPE, OPERATOR, PARTICLE
     }
+
     private HashMap<ReservedTypes, String[]> reserved;   // Reserved words for specific usage
 
     public Lexer(Reader r) {
@@ -99,12 +100,17 @@ public class Lexer {
                 else {
                     String[] types = reserved.get(ReservedTypes.TYPE);
                     String[] operators = reserved.get(ReservedTypes.OPERATOR);
+                    String[] particles = reserved.get(ReservedTypes.PARTICLE);
 
                     if (Arrays.asList(types).contains(m)) {
                         token = new TypeToken(lineNo, tokenIdx, m);
                     } else if (Arrays.asList(operators).contains(m)) {
                         token = new OperatorToken(lineNo, tokenIdx, m);
-                    } else {
+                    } else if (Arrays.asList(particles).contains(m)) {
+                        token = new ParticleToken(lineNo, tokenIdx, m);
+                    }
+
+                    else {
                         token = new IdToken(lineNo, tokenIdx, m);
                     }
                 }
@@ -129,6 +135,17 @@ public class Lexer {
             text = opName;
         }
         public boolean isOperator() { return true; }
+        public String getText() { return text; }
+    }
+
+    protected static class ParticleToken extends Token {
+        private String text;
+        protected ParticleToken(int line, int idx, String parName) {
+            super(line, idx);
+            text = parName;
+        }
+        public boolean isParticle() { return true; }
+        public boolean isIdentifier() { return true; } // For avoiding some conflict parsing issue.
         public String getText() { return text; }
     }
 

@@ -1,5 +1,6 @@
 package NPLang.ast.basic;
 
+import NPLang.NPLangException;
 import NPLang.lexer.Token;
 
 import java.util.ArrayList;
@@ -18,4 +19,5 @@ public class ASTLeaf extends ASTree {
     public String location() { return "at line " + token.getLineNumber(); }
     public Token token() { return token; }
 
+    public String compile() { throw new NPLangException("Error: Compile invoked by ASTLeaf.", this); }
 }

@@ -17,6 +17,7 @@ public abstract class Token {
 
     public boolean isType() { return false; }
     public boolean isOperator() { return false; }
+    public boolean isParticle() { return false; }
     public boolean isIdentifier() { return false; }
     public boolean isNumber() { return false; }
     public boolean isString() { return false; }

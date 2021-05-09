@@ -1,10 +1,7 @@
 package NPLang.parser;
 
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Constructor;
 
@@ -128,6 +125,17 @@ public class Parser {
         }
     }
 
+    protected static class ParticleToken extends AToken {
+        HashSet<String> reserved;
+        protected ParticleToken(Class<? extends ASTLeaf> type, HashSet<String> r) {
+            super(type);
+            reserved = r != null ? r : new HashSet<String>();
+        }
+        protected boolean test(Token t) {
+            return t.isParticle() && !reserved.contains(t.getText());
+        }
+    }
+
     protected static class IdToken extends AToken {
         HashSet<String> reserved;
         protected IdToken(Class<? extends ASTLeaf> type, HashSet<String> r) {
@@ -156,8 +164,9 @@ public class Parser {
                 throws ParseException
         {
             Token t = lexer.read();
+
             if (t.isIdentifier())
-                for (String token: tokens)
+                for (String token : tokens)
                     if (token.equals(t.getText())) {
                         find(res, t);
                         return;
@@ -351,8 +360,7 @@ public class Parser {
     public Parser typeName(HashSet<String> reserved) {
         return typeName(null, reserved);
     }
-    public Parser typeName(Class<? extends ASTLeaf> clazz,
-                             HashSet<String> reserved)
+    public Parser typeName(Class<? extends ASTLeaf> clazz, HashSet<String> reserved)
     {
         elements.add(new TypeToken(clazz, reserved));
         return this;
@@ -361,18 +369,25 @@ public class Parser {
     public Parser operator(HashSet<String> reserved) {
         return operator(null, reserved);
     }
-    public Parser operator(Class<? extends ASTLeaf> clazz,
-                           HashSet<String> reserved)
+    public Parser operator(Class<? extends ASTLeaf> clazz, HashSet<String> reserved)
     {
         elements.add(new OperatorToken(clazz, reserved));
+        return this;
+    }
+
+    public Parser particle(HashSet<String> reserved) {
+        return particle(null, reserved);
+    }
+    public Parser particle(Class<? extends ASTLeaf> clazz, HashSet<String> reserved)
+    {
+        elements.add(new ParticleToken(clazz, reserved));
         return this;
     }
 
     public Parser identifier(HashSet<String> reserved) {
         return identifier(null, reserved);
     }
-    public Parser identifier(Class<? extends ASTLeaf> clazz,
-                             HashSet<String> reserved)
+    public Parser identifier(Class<? extends ASTLeaf> clazz, HashSet<String> reserved)
     {
         elements.add(new IdToken(clazz, reserved));
         return this;
