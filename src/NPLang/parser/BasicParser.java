@@ -84,7 +84,10 @@ public class BasicParser {
         lexer.addNewType(ReservedTypes.OPERATOR, allOperators);
         lexer.addNewType(ReservedTypes.PARTICLE, allParticles);
     }
+
     public ASTree parse(Lexer lexer) throws ParseException {
         return program.parse(lexer);
     }
+
+
 }

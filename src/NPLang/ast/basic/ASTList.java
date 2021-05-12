@@ -12,6 +12,7 @@ public class ASTList extends ASTree {
     public ASTList(List<ASTree> list) {
         children = list;
         compiled_code = "";
+        parent = null;
     }
 
     public ASTree child(int i) { return children.get(i); }

@@ -318,6 +318,13 @@ public class Parser {
         }
     }
 
+
+    /**
+     *
+     * The implementation of the Parser's external API
+     *
+     */
+
     protected List<Element> elements;
     protected Factory factory;
 
@@ -457,5 +464,15 @@ public class Parser {
             or(p, otherwise);
         }
         return this;
+    }
+
+    public static void updateParent(ASTree root) {
+        if (root.numChildren() != 0) {
+            for (Iterator<ASTree> it = root.children(); it.hasNext(); ) {
+                ASTree child = it.next();
+                child.setParent((ASTList) root);
+                Parser.updateParent(child);
+            }
+        }
     }
 }

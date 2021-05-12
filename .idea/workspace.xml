@@ -3,23 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="60c2c210-b2eb-496a-994d-e9bfa2bb501e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/NPLangException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/NPLangException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Assignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Calculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Calculation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Declaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Pronoun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Pronoun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Sentence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Sentence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Statement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Statement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/ValueExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/ValueExpr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTLeaf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTLeaf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/element/Keyword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/element/Particle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/element/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/element/Literal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/element/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/element/Operator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/element/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/element/Type.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/lexer/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/lexer/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/lexer/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/lexer/Token.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NPLang/parser/BasicParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/parser/BasicParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NPLang/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/parser/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NPLangCompiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLangCompiler.java" afterDir="false" />
@@ -106,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619011292013</updated>
       <workItem from="1619011296618" duration="11000" />
-      <workItem from="1619011367483" duration="72746000" />
+      <workItem from="1619011367483" duration="78196000" />
     </task>
     <servers />
   </component>
@@ -118,21 +104,21 @@
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state x="458" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.811@0.23.1440.811" timestamp="1620445423938" />
-    <state width="1398" height="249" key="GridCell.Tab.0.bottom" timestamp="1620486961002">
+    <state width="1398" height="249" key="GridCell.Tab.0.bottom" timestamp="1620808714284">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
-    <state width="1398" height="249" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1620486961002" />
-    <state width="1398" height="249" key="GridCell.Tab.0.center" timestamp="1620486961001">
+    <state width="1398" height="249" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1620808714284" />
+    <state width="1398" height="249" key="GridCell.Tab.0.center" timestamp="1620808714284">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
-    <state width="1398" height="249" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1620486961001" />
-    <state width="1398" height="249" key="GridCell.Tab.0.left" timestamp="1620486961001">
+    <state width="1398" height="249" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1620808714284" />
+    <state width="1398" height="249" key="GridCell.Tab.0.left" timestamp="1620808714283">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
-    <state width="1398" height="249" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1620486961001" />
-    <state width="1398" height="249" key="GridCell.Tab.0.right" timestamp="1620486961001">
+    <state width="1398" height="249" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1620808714283" />
+    <state width="1398" height="249" key="GridCell.Tab.0.right" timestamp="1620808714284">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
-    <state width="1398" height="249" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1620486961001" />
+    <state width="1398" height="249" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1620808714284" />
   </component>
 </project>

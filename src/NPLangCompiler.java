@@ -16,6 +16,7 @@ public class NPLangCompiler {
     public static void run(Lexer lexer, BasicParser bp) throws ParseException {
         while (lexer.peek(0) != Token.EOF) {
             ASTree t = bp.parse(lexer);
+            Parser.updateParent(t);
             if (!(t instanceof NullStmnt)) {
                 String res = t.compile();
                 System.out.println("\n   === Compiled result in Python code ===   \n");
