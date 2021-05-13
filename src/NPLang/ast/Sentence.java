@@ -6,7 +6,15 @@ import NPLang.ast.basic.ASTree;
 import java.util.List;
 
 public class Sentence extends ASTList {
-    public Sentence(List<ASTree> c) { super(c); }
+    public Sentence(List<ASTree> c) {
+        super(c);
+
+        // Assign index for each statement
+        int i = 0;
+        for (ASTree child: children) {
+            ((Statement)child).setIndex(i++);
+        }
+    }
 
     // sentence: statement {"," [EOL] "then" statement}
     public String compile() {

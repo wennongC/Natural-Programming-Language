@@ -122,7 +122,7 @@ public class Lexer {
         private String text;
         protected TypeToken(int line, int idx, String typeName) {
             super(line, idx);
-            text = typeName;
+            text = typeName.toLowerCase();
         }
         public boolean isType() { return true; }
         public String getText() { return text; }
@@ -132,7 +132,7 @@ public class Lexer {
         private String text;
         protected OperatorToken(int line, int idx, String opName) {
             super(line, idx);
-            text = opName;
+            text = opName.toLowerCase();
         }
         public boolean isOperator() { return true; }
         public String getText() { return text; }
@@ -142,7 +142,7 @@ public class Lexer {
         private String text;
         protected ParticleToken(int line, int idx, String parName) {
             super(line, idx);
-            text = parName;
+            text = parName.toLowerCase();
         }
         public boolean isParticle() { return true; }
         public boolean isIdentifier() { return true; } // For avoiding some conflict parsing issue.

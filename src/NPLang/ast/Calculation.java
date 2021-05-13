@@ -41,7 +41,7 @@ public class Calculation extends ASTList {
                     compiled_code += op1().compile() + " " + getOperator() + "= " + op2().compile() + "\n";
                     break;
                 case Particle.and:
-                    compiled_code += op1().compile() + " " + getOperator() + " " + op2().getClass() + "\n";
+                    compiled_code += op1().compile() + " " + getOperator() + " " + op2().compile() + "\n";
                     break;
                 default:
                     throw new NPLangException("Error: Unknown Particle", particle());

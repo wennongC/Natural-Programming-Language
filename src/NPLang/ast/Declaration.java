@@ -9,7 +9,7 @@ import java.util.List;
 public class Declaration extends ASTList {
     public Declaration(List<ASTree> c) { super(c); }
 
-    public ASTree identifier() { return child(0); }
+    public Identifier identifier() { return (Identifier) child(0); }
     public ASTree value() {
         if (numChildren() > 1) return child(1);
         else return null;
@@ -17,7 +17,7 @@ public class Declaration extends ASTList {
 
     // "set a variable called" IDENTIFIER [("with" value)]
     public String compile() {
-        compiled_code = ((Identifier)identifier()).name() + " = ";
+        compiled_code = identifier().name() + " = ";
 
         if (value() == null) compiled_code += "None\n";
         else compiled_code += value().compile() + "\n";

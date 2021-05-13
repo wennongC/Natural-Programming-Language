@@ -48,10 +48,10 @@ public class BasicParser {
             rule().ast(calculation)
     );
 
-    // sentence: statement {"," [EOL] "then" statement}
+    // sentence: statement {"," {EOL} "then" statement}
     Parser sentence = rule(Sentence.class).ast(statement)
             .repeat(rule()
-                    .sep(",").option(rule().sep(Token.EOL)).sep("then")
+                    .sep(",").repeat(rule().sep(Token.EOL)).sep("then")
                     .ast(statement)
             );
 
