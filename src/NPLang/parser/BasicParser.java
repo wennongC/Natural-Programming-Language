@@ -70,6 +70,7 @@ public class BasicParser {
         String[] allOperators = {
                 Operator.add,
                 Operator.subtract,
+                Operator.minus,
                 Operator.multiply,
                 Operator.divide
         };

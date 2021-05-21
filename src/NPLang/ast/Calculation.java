@@ -21,6 +21,7 @@ public class Calculation extends ASTList {
             case Operator.add:
                 return "+";
             case Operator.subtract:
+            case Operator.minus:
                 return "-";
             case Operator.multiply:
                 return "*";
