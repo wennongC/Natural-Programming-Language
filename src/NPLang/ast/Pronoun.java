@@ -6,6 +6,8 @@ import NPLang.ast.basic.ASTree;
 import NPLang.ast.element.Identifier;
 import NPLang.ast.element.Particle;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Pronoun extends ASTList {
@@ -15,31 +17,47 @@ public class Pronoun extends ASTList {
     public Pronoun(List<ASTree> c) { super(c); }
 
 
+    private String analyseNode(Statement stmt) {
+        ASTree node = stmt.child(0);
+        if (node instanceof Declaration) {
+            return ((Declaration)node).identifier().name();
+        } else if (node instanceof Calculation) {
+            switch (((Calculation) node).particle().text()) {
+                case Particle.and:
+                    // Assign the whole calculation expression to this Pronoun
+                    return ((Calculation) node).compiled_code;
+                case Particle.by:
+                    // Assign the left value to this Pronoun
+                    return ((Calculation) node).op1().compiled_code;
+            }
+        } else if (node instanceof Assignment) {
+            return ((Assignment) node).get_lr_op(Assignment.LR_VALUE.LEFT_VALUE).compiled_code;
+        }
+        return null;
+    }
+
     // Analyze the pronoun word
-    public void decodePronoun() {
-        switch (compiled_code) {
+    private void decodePronoun(String p) {
+        Statement previous;
+        switch (p) {
             case Pronoun.it:
-                Statement previous = ((Statement)parent().parent()).previous();
+                previous = ((Statement)parent().parent()).previous();
                 if (previous == null)
                     throw new NPLangException("Error: unable to decode pronoun 'it'", this);
-
-                ASTree node = previous.child(0);
-                if (node instanceof Declaration) {
-                    compiled_code = ((Declaration)node).identifier().name();
-                } else if (node instanceof Calculation) {
-                    switch (((Calculation) node).particle().text()) {
-                        case Particle.and:
-                            compiled_code = ((Calculation) node).compiled_code;
-                            break;
-                        case Particle.by:
-                            compiled_code = ((Calculation) node).op1().compiled_code;
-                            break;
-                    }
-                }
+                compiled_code = analyseNode(previous);
                 break;
+
             case Pronoun.them:
-
+                ArrayList<String> results = new ArrayList<>();
+                previous = ((Statement)parent().parent()).previous();
+                while (previous != null) {
+                    results.add(analyseNode(previous));
+                    previous = previous.previous(); // Continue to trace back one statement before
+                }
+                Collections.reverse(results);
+                compiled_code = String.join(", ", results);
                 break;
+
             default:
         }
     }
@@ -51,7 +69,7 @@ public class Pronoun extends ASTList {
             compiled_code = child(0).compile();
         else {
             compiled_code = ((Identifier) child(0)).name();
-             decodePronoun();
+            decodePronoun(compiled_code);
         }
 
         return compiled_code;

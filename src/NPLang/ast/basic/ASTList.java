@@ -41,5 +41,5 @@ public class ASTList extends ASTree {
     }
 
     public String compile() { throw new NPLangException("Error: Compile invoked by ASTList base class.", this); }
-
+    public void do_not_display() { compiled_code = ""; }
 }

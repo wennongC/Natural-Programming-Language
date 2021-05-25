@@ -15,7 +15,6 @@ public class Calculation extends ASTList {
     public Particle particle() { return (Particle)(child(2).child(0)); }
     public Pronoun op2() { return (Pronoun)(child(2).child(1)); }
 
-
     public String getOperator() {
         switch (operator().name()) {
             case Operator.add:
@@ -35,7 +34,9 @@ public class Calculation extends ASTList {
     // calculation: OP pronoun [("by" | "and") pronoun]
     public String compile() {
         if (numChildren() == 2) {
+
             compiled_code += getOperator() + op1() + "\n";
+
         } else {
             switch (particle().text()) {
                 case Particle.by:

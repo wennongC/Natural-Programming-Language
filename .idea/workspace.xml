@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="60c2c210-b2eb-496a-994d-e9bfa2bb501e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Assignment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Calculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Calculation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Pronoun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Pronoun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +90,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619011292013</updated>
       <workItem from="1619011296618" duration="11000" />
-      <workItem from="1619011367483" duration="91674000" />
+      <workItem from="1619011367483" duration="103087000" />
     </task>
     <servers />
   </component>
@@ -98,21 +102,21 @@
       <screen x="0" y="23" width="1440" height="811" />
     </state>
     <state x="458" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.811@0.23.1440.811" timestamp="1620445423938" />
-    <state width="1398" height="249" key="GridCell.Tab.0.bottom" timestamp="1620869350323">
+    <state width="1398" height="264" key="GridCell.Tab.0.bottom" timestamp="1621906439780">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
-    <state width="1398" height="249" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1620869350323" />
-    <state width="1398" height="249" key="GridCell.Tab.0.center" timestamp="1620869350322">
+    <state width="1398" height="264" key="GridCell.Tab.0.bottom/0.23.1440.811@0.23.1440.811" timestamp="1621906439780" />
+    <state width="1398" height="264" key="GridCell.Tab.0.center" timestamp="1621906439780">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
-    <state width="1398" height="249" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1620869350322" />
-    <state width="1398" height="249" key="GridCell.Tab.0.left" timestamp="1620869350322">
+    <state width="1398" height="264" key="GridCell.Tab.0.center/0.23.1440.811@0.23.1440.811" timestamp="1621906439780" />
+    <state width="1398" height="264" key="GridCell.Tab.0.left" timestamp="1621906439779">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
-    <state width="1398" height="249" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1620869350322" />
-    <state width="1398" height="249" key="GridCell.Tab.0.right" timestamp="1620869350323">
+    <state width="1398" height="264" key="GridCell.Tab.0.left/0.23.1440.811@0.23.1440.811" timestamp="1621906439779" />
+    <state width="1398" height="264" key="GridCell.Tab.0.right" timestamp="1621906439780">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
-    <state width="1398" height="249" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1620869350323" />
+    <state width="1398" height="264" key="GridCell.Tab.0.right/0.23.1440.811@0.23.1440.811" timestamp="1621906439780" />
   </component>
 </project>
