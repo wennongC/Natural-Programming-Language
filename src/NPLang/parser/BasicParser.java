@@ -64,8 +64,9 @@ public class BasicParser {
         reserved.add(Token.EOL);
 
         String[] allTypes = {
-                Type.integer,
-                Type.string,
+                Type.t_integer,
+                Type.t_string,
+                Type.t_boolean,
         };
         String[] allOperators = {
                 Operator.add,

@@ -4,8 +4,9 @@ import NPLang.ast.basic.ASTLeaf;
 import NPLang.lexer.Token;
 
 public class Type extends ASTLeaf {
-    public static final String integer = "integer";
-    public static final String string = "string";
+    public static final String t_integer = "integer";
+    public static final String t_string = "string";
+    public static final String t_boolean = "boolean";
 
     public Type(Token t) { super(t); }
     public String name() { return token().getText(); }

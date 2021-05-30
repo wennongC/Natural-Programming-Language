@@ -16,12 +16,17 @@ public class ValueExpr extends ASTList {
 
     public String compile() {
         switch (((Type)type()).name()) {
-            case Type.integer:
+            case Type.t_integer:
                 compiled_code += String.valueOf(((Literal)value()).value());
                 break;
-            case Type.string:
+            case Type.t_string:
                 compiled_code += '\"' + ((Literal)value()).text() + '\"';
                 break;
+            case Type.t_boolean:
+                String bool = ((Literal)value()).text();
+                if (bool.equalsIgnoreCase("true")) compiled_code += "True";
+                else if (bool.equalsIgnoreCase("false")) compiled_code += "False";
+                else throw new NPLangException("Unknown Value for Type 'boolean': " + bool, this);
             default:
                 throw new NPLangException("Unknown Type: " + type(), this);
         }
