@@ -8,6 +8,9 @@ public class Type extends ASTLeaf {
     public static final String t_string = "string";
     public static final String t_boolean = "boolean";
 
+    public static final String t_list = "list";
+    public static final String t_tuple = "tuple";
+
     public Type(Token t) { super(t); }
     public String name() { return token().getText(); }
 }

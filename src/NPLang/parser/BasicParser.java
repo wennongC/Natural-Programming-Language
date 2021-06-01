@@ -29,13 +29,14 @@ public class BasicParser {
 
     // declaration: "set a variable called" IDENTIFIER [("with" value)]
     Parser declaration = rule(Declaration.class)
-            .sep("set").sep("a").sep("variable").sep("called")
+            .sep("set").option(rule().sep("a")).sep("variable").option(rule().sep("called"))
             .identifier(Identifier.class, reserved)
             .option(rule().sep("with").ast(valueExpr));
 
-    // assignment: "assign" pronoun ("to" | "with") pronoun
+    // assignment: "assign" pronoun ("to" | "with") pronoun ["as" TYPE]
     Parser assignment = rule(Assignment.class)
-            .sep("assign").ast(pronoun).particle(Particle.class, reserved).ast(pronoun);
+            .sep("assign").ast(pronoun).particle(Particle.class, reserved).ast(pronoun)
+            .option(rule().sep("as").typeName(Type.class, reserved));
 
     // calculation: OP pronoun [("by" | "and") pronoun]
     Parser calculation = rule(Calculation.class).operator(Operator.class, reserved)
@@ -67,6 +68,8 @@ public class BasicParser {
                 Type.t_integer,
                 Type.t_string,
                 Type.t_boolean,
+                Type.t_list,
+                Type.t_tuple
         };
         String[] allOperators = {
                 Operator.add,
