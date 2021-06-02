@@ -9,6 +9,8 @@ public class Particle extends ASTLeaf {
     public static final String by = "by";
     public static final String and = "and";
 
+    public static final String[] reserved = {to, with, by, and};
+
     public Particle(Token t) { super(t); }
 
     public String text() { return token().getText(); }

@@ -10,6 +10,8 @@ public class Operator extends ASTLeaf {
     public static final String multiply = "multiply";
     public static final String divide = "divide";
 
+    public static final String[] reserved = {add, subtract, minus, multiply, divide};
+
     public Operator(Token t) { super(t); }
     public String name() { return token().getText(); }
 }

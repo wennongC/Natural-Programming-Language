@@ -11,6 +11,8 @@ public class Type extends ASTLeaf {
     public static final String t_list = "list";
     public static final String t_tuple = "tuple";
 
+    public static final String[] reserved = {t_integer, t_string, t_boolean, t_list, t_tuple};
+
     public Type(Token t) { super(t); }
     public String name() { return token().getText(); }
 }

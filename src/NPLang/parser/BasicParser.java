@@ -64,30 +64,9 @@ public class BasicParser {
         reserved.add(".");
         reserved.add(Token.EOL);
 
-        String[] allTypes = {
-                Type.t_integer,
-                Type.t_string,
-                Type.t_boolean,
-                Type.t_list,
-                Type.t_tuple
-        };
-        String[] allOperators = {
-                Operator.add,
-                Operator.subtract,
-                Operator.minus,
-                Operator.multiply,
-                Operator.divide
-        };
-        String[] allParticles = {
-                Particle.to,
-                Particle.with,
-                Particle.by,
-                Particle.and
-        };
-
-        lexer.addNewType(ReservedTypes.TYPE, allTypes);
-        lexer.addNewType(ReservedTypes.OPERATOR, allOperators);
-        lexer.addNewType(ReservedTypes.PARTICLE, allParticles);
+        lexer.addNewType(ReservedTypes.TYPE, Type.reserved);
+        lexer.addNewType(ReservedTypes.OPERATOR, Operator.reserved);
+        lexer.addNewType(ReservedTypes.PARTICLE, Particle.reserved);
     }
 
     public ASTree parse(Lexer lexer) throws ParseException {
