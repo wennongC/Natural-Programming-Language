@@ -35,16 +35,21 @@ public class Assignment extends ASTList {
     public String compile() {
         compiled_code = get_lr_op(LR_VALUE.LEFT_VALUE).compile() + " = ";
 
-        switch (asType()) {
-            case Type.t_list:
-                compiled_code += "[" + get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + "]\n";
-                break;
-            case Type.t_tuple:
-                compiled_code += "(" + get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + ")\n";
-                break;
-            default:
-                compiled_code += get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + "\n";
-        }
+        String type = asType();
+        if (type != null)
+            switch (type) {
+                case Type.t_list:
+                    compiled_code += "[" + get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + "]\n";
+                    break;
+                case Type.t_tuple:
+                    compiled_code += "(" + get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + ")\n";
+                    break;
+                default:
+
+            }
+        else
+            compiled_code += get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + "\n";
+
         return compiled_code;
     }
 }

@@ -8,12 +8,12 @@ public class NPLangCompiler {
 
     public static void main(String[] args) throws ParseException {
         Lexer lexer = new Lexer(new CodeDialog());
-        BasicParser bp = new BasicParser(lexer);
+        FuncParser fp = new FuncParser(lexer);
 
-        run(lexer, bp);
+        run(lexer, fp);
     }
 
-    public static void run(Lexer lexer, BasicParser bp) throws ParseException {
+    public static void run(Lexer lexer, FuncParser bp) throws ParseException {
         while (lexer.peek(0) != Token.EOF) {
             ASTree t = bp.parse(lexer);
             Parser.updateParent(t);

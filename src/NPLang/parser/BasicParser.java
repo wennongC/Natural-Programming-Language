@@ -42,7 +42,7 @@ public class BasicParser {
     Parser calculation = rule(Calculation.class).operator(Operator.class, reserved)
             .ast(pronoun).option(rule().particle(Particle.class, reserved).ast(pronoun));
 
-    // statement: declaration | assignment | calculation
+    // statement: declaration | assignment | calculation | invoke
     Parser statement = rule(Statement.class).or(
             rule().ast(declaration),
             rule().ast(assignment),
