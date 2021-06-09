@@ -3,7 +3,6 @@ package NPLang.parser;
 import NPLang.ast.Function;
 import NPLang.ast.Invoke;
 import NPLang.ast.element.Identifier;
-import NPLang.ast.element.NullStmnt;
 import NPLang.lexer.*;
 
 import static NPLang.parser.Parser.rule;
