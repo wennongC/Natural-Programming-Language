@@ -25,7 +25,7 @@ public class Function extends ASTList {
             if (child(i) instanceof Sentence)
                 funcDef.append(((Sentence)child(i)).compile(indentDepth + 1));
         }
-        funcDef.append(Util.repeatTab(indentDepth)).append("}\n");
+        funcDef.append(Util.repeatTab(indentDepth)).append("}");
 
         compiled_code = funcDef.toString();
         return compiled_code;

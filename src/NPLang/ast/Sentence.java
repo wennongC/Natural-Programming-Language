@@ -23,12 +23,9 @@ public class Sentence extends ASTList {
         StringBuilder statements = new StringBuilder();
 
         for (ASTree child: children) {
-            String compiled_child;
-            if (child instanceof Function)
-                compiled_child = ((Function) child).compile(indentDepth);
-            else
-                compiled_child = child.compile();
-            statements.append(Util.repeatTab(indentDepth)).append(compiled_child).append("\n");
+            statements.append(Util.repeatTab(indentDepth))
+                    .append(((Statement)child).compile(indentDepth))
+                    .append("\n");
         }
         compiled_code = statements.toString();
         return compiled_code;

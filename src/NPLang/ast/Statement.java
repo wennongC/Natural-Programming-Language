@@ -17,9 +17,13 @@ public class Statement extends ASTList {
         else return (Statement) parent.child(index-1);
     }
 
-    // statement: declaration | assignment | calculation
-    public String compile() {
-        compiled_code = child(0).compile();
+    // statement: declaration | assignment | calculation | invoke | returnExpr
+    public String compile() { return compile(0); }
+    public String compile(int indentDepth) {
+        if (child(0) instanceof Function)
+            compiled_code = ((Function)child(0)).compile(indentDepth);
+        else
+            compiled_code = child(0).compile();
         return compiled_code;
     }
 }

@@ -39,16 +39,16 @@ public class Assignment extends ASTList {
         if (type != null)
             switch (type) {
                 case Type.t_list:
-                    compiled_code += "[" + get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + "]\n";
+                    compiled_code += "[" + get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + "]";
                     break;
                 case Type.t_tuple:
-                    compiled_code += "(" + get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + ")\n";
+                    compiled_code += "(" + get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + ")";
                     break;
                 default:
 
             }
         else
-            compiled_code += get_lr_op(LR_VALUE.RIGHT_VALUE).compile() + "\n";
+            compiled_code += get_lr_op(LR_VALUE.RIGHT_VALUE).compile();
 
         return compiled_code;
     }
