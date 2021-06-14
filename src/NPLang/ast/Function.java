@@ -1,8 +1,10 @@
 package NPLang.ast;
 
+import NPLang.Util;
 import NPLang.ast.basic.ASTList;
 import NPLang.ast.basic.ASTree;
 import NPLang.ast.element.Identifier;
+import NPLang.ast.element.NullStmnt;
 
 import java.util.List;
 
@@ -12,11 +14,22 @@ public class Function extends ASTList {
 
     public String functionName() { return ((Identifier)child(0)).name(); }
 
-    // function: “define function” IDENTIFIER program “end define”
-    public String compile() {
+    // function: “define function” IDENTIFIER ("." | EOL) program “end define”
+    public String compile() { return compile(0); }
+    public String compile(int indentDepth) {
 
-        System.out.println(child(1));
+        StringBuilder funcDef = new StringBuilder();
 
+        funcDef.append("def ").append(functionName()).append("() {\n");
+        for (int i = 1; i < numChildren(); i++) {
+            if (child(i) instanceof Sentence)
+                funcDef.append(((Sentence)child(i)).compile(indentDepth + 1));
+        }
+        funcDef.append(Util.repeatTab(indentDepth)).append("}\n");
+
+        compiled_code = funcDef.toString();
         return compiled_code;
     }
+
+
 }

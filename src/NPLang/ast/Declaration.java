@@ -19,8 +19,8 @@ public class Declaration extends ASTList {
     public String compile() {
         compiled_code = identifier().name() + " = ";
 
-        if (value() == null) compiled_code += "None\n";
-        else compiled_code += value().compile() + "\n";
+        if (value() == null) compiled_code += "None";
+        else compiled_code += value().compile();
 
         return compiled_code;
     }

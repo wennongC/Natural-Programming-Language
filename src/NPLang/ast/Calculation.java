@@ -35,15 +35,15 @@ public class Calculation extends ASTList {
     public String compile() {
         if (numChildren() == 2) {
 
-            compiled_code += getOperator() + op1() + "\n";
+            compiled_code += getOperator() + op1().compile();
 
         } else {
             switch (particle().text()) {
                 case Particle.by:
-                    compiled_code += op1().compile() + " " + getOperator() + "= " + op2().compile() + "\n";
+                    compiled_code += op1().compile() + " " + getOperator() + "= " + op2().compile();
                     break;
                 case Particle.and:
-                    compiled_code += op1().compile() + " " + getOperator() + " " + op2().compile() + "\n";
+                    compiled_code += op1().compile() + " " + getOperator() + " " + op2().compile();
                     break;
                 default:
                     throw new NPLangException("Error: Unknown Particle", particle());

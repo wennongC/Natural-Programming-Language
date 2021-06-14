@@ -62,17 +62,24 @@ public class Parser {
     protected static class Repeat extends Element {
         protected Parser parser;
         protected boolean onlyOnce;
+        protected String terminator = null;
         protected Repeat(Parser p, boolean once) { parser = p; onlyOnce = once; }
+        protected Repeat(Parser p, boolean once, String stop_token) {
+            parser = p; onlyOnce = once; terminator = stop_token;
+        }
         protected void parse(Lexer lexer, List<ASTree> res)
                 throws ParseException
         {
-            while (parser.match(lexer)) {
-                ASTree t = parser.parse(lexer);
-                if (t.getClass() != ASTList.class || t.numChildren() > 0)
-                    res.add(t);
-                if (onlyOnce)
-                    break;
-            }
+            if (terminator == null || !lexer.peek(0).getText().equals(terminator))
+                while (parser.match(lexer)) {
+                    ASTree t = parser.parse(lexer);
+                    if (t.getClass() != ASTList.class || t.numChildren() > 0)
+                        res.add(t);
+                    if (onlyOnce)
+                        break;
+                    if (lexer.peek(0).getText().equals(terminator))
+                        break;
+                }
         }
         protected boolean match(Lexer lexer) throws ParseException {
             return parser.match(lexer);
@@ -443,6 +450,10 @@ public class Parser {
     }
     public Parser repeat(Parser p) {
         elements.add(new Repeat(p, false));
+        return this;
+    }
+    public Parser repeat(Parser p, String stop) {
+        elements.add(new Repeat(p, false, stop));
         return this;
     }
     public Parser expression(Parser subexp, Operators operators) {

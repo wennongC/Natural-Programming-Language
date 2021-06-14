@@ -22,14 +22,18 @@ public class Pronoun extends ASTList {
         if (node instanceof Declaration) {
             return ((Declaration)node).identifier().name();
         } else if (node instanceof Calculation) {
-            switch (((Calculation) node).particle().text()) {
-                case Particle.and:
-                    // Assign the whole calculation expression to this Pronoun
-                    return ((Calculation) node).compiled_code;
-                case Particle.by:
-                    // Assign the left value to this Pronoun
-                    return ((Calculation) node).op1().compiled_code;
-            }
+            if (node.numChildren() == 2){
+                // Assign the whole calculation expression to this Pronoun
+                return ((Calculation) node).compiled_code;
+            } else
+                switch (((Calculation) node).particle().text()) {
+                    case Particle.and:
+                        // Assign the whole calculation expression to this Pronoun
+                        return ((Calculation) node).compiled_code;
+                    case Particle.by:
+                        // Assign the left value to this Pronoun
+                        return ((Calculation) node).op1().compiled_code;
+                }
         } else if (node instanceof Assignment) {
             return ((Assignment) node).get_lr_op(Assignment.LR_VALUE.LEFT_VALUE).compiled_code;
         }

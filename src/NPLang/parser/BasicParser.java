@@ -42,7 +42,7 @@ public class BasicParser {
     Parser calculation = rule(Calculation.class).operator(Operator.class, reserved)
             .ast(pronoun).option(rule().particle(Particle.class, reserved).ast(pronoun));
 
-    // statement: declaration | assignment | calculation | invoke
+    // statement: declaration | assignment | calculation | invoke | returnExpr
     Parser statement = rule(Statement.class).or(
             rule().ast(declaration),
             rule().ast(assignment),
@@ -72,6 +72,5 @@ public class BasicParser {
     public ASTree parse(Lexer lexer) throws ParseException {
         return program.parse(lexer);
     }
-
 
 }

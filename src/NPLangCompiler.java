@@ -13,9 +13,9 @@ public class NPLangCompiler {
         run(lexer, fp);
     }
 
-    public static void run(Lexer lexer, FuncParser bp) throws ParseException {
+    public static void run(Lexer lexer, FuncParser parser) throws ParseException {
         while (lexer.peek(0) != Token.EOF) {
-            ASTree t = bp.parse(lexer);
+            ASTree t = parser.parse(lexer);
             Parser.updateParent(t);
             if (!(t instanceof NullStmnt)) {
                 String res = t.compile();
