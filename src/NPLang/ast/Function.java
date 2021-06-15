@@ -4,7 +4,6 @@ import NPLang.Util;
 import NPLang.ast.basic.ASTList;
 import NPLang.ast.basic.ASTree;
 import NPLang.ast.element.Identifier;
-import NPLang.ast.element.NullStmnt;
 
 import java.util.List;
 

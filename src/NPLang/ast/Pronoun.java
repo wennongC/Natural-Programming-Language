@@ -21,7 +21,8 @@ public class Pronoun extends ASTList {
         ASTree node = stmt.child(0);
         if (node instanceof Declaration) {
             return ((Declaration)node).identifier().name();
-        } else if (node instanceof Calculation) {
+        }
+        else if (node instanceof Calculation) {
             if (node.numChildren() == 2){
                 // Assign the whole calculation expression to this Pronoun
                 return ((Calculation) node).compiled_code;
@@ -34,8 +35,14 @@ public class Pronoun extends ASTList {
                         // Assign the left value to this Pronoun
                         return ((Calculation) node).op1().compiled_code;
                 }
-        } else if (node instanceof Assignment) {
+        }
+        else if (node instanceof Assignment) {
             return ((Assignment) node).get_lr_op(Assignment.LR_VALUE.LEFT_VALUE).compiled_code;
+        }
+        else if (node instanceof Invoke) {
+            return ((Invoke) node).compiled_code;
+        } else if (node instanceof Function) {
+            return ((Function) node).functionName();
         }
         return null;
     }
