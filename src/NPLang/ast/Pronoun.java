@@ -19,32 +19,36 @@ public class Pronoun extends ASTList {
 
     private String analyseNode(Statement stmt) {
         ASTree node = stmt.child(0);
+        String res = null;
         if (node instanceof Declaration) {
-            return ((Declaration)node).identifier().name();
+            res = ((Declaration)node).identifier().name();
         }
         else if (node instanceof Calculation) {
             if (node.numChildren() == 2){
                 // Assign the whole calculation expression to this Pronoun
-                return ((Calculation) node).compiled_code;
+                res = ((Calculation) node).compiled_code;
+                node.parent().do_not_display();
             } else
                 switch (((Calculation) node).particle().text()) {
                     case Particle.and:
                         // Assign the whole calculation expression to this Pronoun
-                        return ((Calculation) node).compiled_code;
+                        res = ((Calculation) node).compiled_code;
+                        node.parent().do_not_display();
+                        break;
                     case Particle.by:
                         // Assign the left value to this Pronoun
-                        return ((Calculation) node).op1().compiled_code;
+                        res = ((Calculation) node).op1().compiled_code;
                 }
         }
         else if (node instanceof Assignment) {
-            return ((Assignment) node).get_lr_op(Assignment.LR_VALUE.LEFT_VALUE).compiled_code;
+            res = ((Assignment) node).get_lr_op(Assignment.LR_VALUE.LEFT_VALUE).compiled_code;
         }
         else if (node instanceof Invoke) {
-            return ((Invoke) node).compiled_code;
+            res = ((Invoke) node).compiled_code;
         } else if (node instanceof Function) {
-            return ((Function) node).functionName();
+            res = ((Function) node).functionName();
         }
-        return null;
+        return res;
     }
 
     // Analyze the pronoun word

@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 public abstract class ASTree implements Iterable<ASTree> {
     protected ASTList parent;
+    public Boolean visible = true;
 
     public void setParent(ASTList parent) { this.parent = parent; }
     public ASTList parent() { return parent; };

@@ -43,8 +43,10 @@ public class ASTList extends ASTree {
 
     public String compile() { throw new NPLangException("Error: Compile invoked by ASTList base class.", this); }
     public String getCompiledCode() {
-        if (compiled_flag) return compiled_code;
-        else return compile();
+        if (!compiled_flag) compile();
+
+        if (visible) return compiled_code;
+        else return "";
     }
-    public void do_not_display() { compiled_code = ""; }
+    public void do_not_display() { visible = false; }
 }
