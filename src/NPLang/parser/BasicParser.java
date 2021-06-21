@@ -25,7 +25,10 @@ public class BasicParser {
 
     // pronoun: value | IDENTIFIER
     Parser pronoun = rule(Pronoun.class)
-            .or(rule().ast(valueExpr), rule().identifier(Identifier.class, reserved));
+            .or(
+                    rule().ast(valueExpr),
+                    rule().identifier(Identifier.class, reserved)
+            );
 
     // declaration: "set a variable called" IDENTIFIER [("with" value)]
     Parser declaration = rule(Declaration.class)

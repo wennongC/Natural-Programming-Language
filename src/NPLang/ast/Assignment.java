@@ -50,6 +50,7 @@ public class Assignment extends ASTList {
         else
             compiled_code += get_lr_op(LR_VALUE.RIGHT_VALUE).compile();
 
+        compiled_flag = true;
         return compiled_code;
     }
 }

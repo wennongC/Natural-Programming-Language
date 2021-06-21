@@ -20,6 +20,7 @@ public class Invoke extends ASTList {
 
         compiled_code = functionName() + "(" + args + ")";
 
+        compiled_flag = true;
         return compiled_code;
     }
 }

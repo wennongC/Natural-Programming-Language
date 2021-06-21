@@ -24,6 +24,8 @@ public class Statement extends ASTList {
             compiled_code = ((Function)child(0)).compile(indentDepth);
         else
             compiled_code = child(0).compile();
+
+        compiled_flag = true;
         return compiled_code;
     }
 }

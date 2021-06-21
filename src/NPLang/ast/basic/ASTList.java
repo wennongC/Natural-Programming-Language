@@ -8,6 +8,7 @@ import java.util.List;
 public class ASTList extends ASTree {
     protected List<ASTree> children;
     public String compiled_code;
+    public Boolean compiled_flag = false;
 
     public ASTList(List<ASTree> list) {
         children = list;
@@ -41,5 +42,9 @@ public class ASTList extends ASTree {
     }
 
     public String compile() { throw new NPLangException("Error: Compile invoked by ASTList base class.", this); }
+    public String getCompiledCode() {
+        if (compiled_flag) return compiled_code;
+        else return compile();
+    }
     public void do_not_display() { compiled_code = ""; }
 }

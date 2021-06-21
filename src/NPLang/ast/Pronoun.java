@@ -83,6 +83,7 @@ public class Pronoun extends ASTList {
             decodePronoun(compiled_code);
         }
 
+        compiled_flag = true;
         return compiled_code;
     }
 }

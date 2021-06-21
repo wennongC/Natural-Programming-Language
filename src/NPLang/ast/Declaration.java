@@ -22,6 +22,7 @@ public class Declaration extends ASTList {
         if (value() == null) compiled_code += "None";
         else compiled_code += value().compile();
 
+        compiled_flag = true;
         return compiled_code;
     }
 }

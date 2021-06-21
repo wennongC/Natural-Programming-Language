@@ -50,6 +50,7 @@ public class Calculation extends ASTList {
             }
         }
 
+        compiled_flag = true;
         return compiled_code;
     }
 }

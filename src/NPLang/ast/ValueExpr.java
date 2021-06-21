@@ -34,6 +34,7 @@ public class ValueExpr extends ASTList {
             default:
                 throw new NPLangException("Unknown Type: " + type(), this);
         }
+        compiled_flag = true;
         return compiled_code;
     }
 }

@@ -18,9 +18,9 @@ public class NPLangCompiler {
             ASTree t = parser.parse(lexer);
             Parser.updateParent(t);
             if (!(t instanceof NullStmnt)) {
-                String res = t.compile();
+                t.compile();
                 System.out.println("\n   === Compiled result in Python code ===   \n");
-                System.out.println(res);
+                System.out.println(t.getCompiledCode());
             }
         }
     }

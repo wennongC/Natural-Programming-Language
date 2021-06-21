@@ -27,7 +27,9 @@ public class Sentence extends ASTList {
                     .append(((Statement)child).compile(indentDepth))
                     .append("\n");
         }
+
         compiled_code = statements.toString();
+        compiled_flag = true;
         return compiled_code;
     }
 }

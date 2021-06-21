@@ -22,5 +22,6 @@ public class ASTLeaf extends ASTree {
     public String location() { return "at line " + token.getLineNumber(); }
     public Token token() { return token; }
 
-    public String compile() { throw new NPLangException("Error: Compile invoked by ASTLeaf.", this); }
+    public String compile() { throw new NPLangException("Error: compile() invoked by ASTLeaf.", this); }
+    public String getCompiledCode() { throw new NPLangException("Error: getCompileCode() invoked by ASTLeaf.", this); }
 }

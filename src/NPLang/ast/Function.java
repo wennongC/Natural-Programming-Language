@@ -44,6 +44,7 @@ public class Function extends ASTList {
         funcDef.append(Util.repeatTab(indentDepth)).append("}");
 
         compiled_code = funcDef.toString();
+        compiled_flag = true;
         return compiled_code;
     }
 
