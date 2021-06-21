@@ -4,6 +4,7 @@ import NPLang.ast.Function;
 import NPLang.ast.Invoke;
 import NPLang.ast.ReturnExpr;
 import NPLang.ast.element.Identifier;
+import NPLang.ast.element.Literal;
 import NPLang.ast.element.NullStmnt;
 import NPLang.lexer.*;
 
@@ -16,9 +17,14 @@ public class FuncParser extends BasicParser {
             .identifier(Identifier.class, reserved)
             .option(rule().sep("with").ast(pronoun));
 
-    // function: “define function” IDENTIFIER ("." | EOL) {sentence ("." | EOL)} “end define”
-    Parser function = rule(Function.class).sep("define").sep("function").identifier(Identifier.class, reserved)
-            .sep(".", Token.EOL)
+    // function: “define function” IDENTIFIER ["taking" LITERAL] ("argument" | "arguments) ("." | EOL)
+    //          {sentence ("." | EOL)} “end define”
+    Parser function = rule(Function.class).sep("define").sep("function", "good").identifier(Identifier.class, reserved)
+            .option(rule().sep("taking", "with")
+                    .or(
+                        rule().identifier(Literal.class, reserved),
+                        rule().number(Literal.class)
+                    ).sep("argument", "arguments")).sep(".", Token.EOL)
             .repeat(rule().or(sentence, rule(NullStmnt.class)).sep(".", Token.EOL), "end")
             .sep("end").sep("define");
 
