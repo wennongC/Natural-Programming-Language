@@ -10,6 +10,7 @@ public class ReturnExpr extends ASTList {
 
     public Pronoun returnValue() { return ((Pronoun)child(0)); }
 
+    // returnExpr: "return" Pronoun
     public String compile() {
         compiled_code = "return " + returnValue().compile();
         return compiled_code;

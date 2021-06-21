@@ -19,7 +19,9 @@ public class FuncParser extends BasicParser {
 
     // function: “define function” IDENTIFIER ["taking" LITERAL] ("argument" | "arguments) ("." | EOL)
     //          {sentence ("." | EOL)} “end define”
-    Parser function = rule(Function.class).sep("define").sep("function", "good").identifier(Identifier.class, reserved)
+    Parser function = rule(Function.class)
+            .sep("define").option(rule().sep("a")).sep("function").option(rule().sep("called"))
+            .identifier(Identifier.class, reserved)
             .option(rule().sep("taking", "with")
                     .or(
                         rule().identifier(Literal.class, reserved),

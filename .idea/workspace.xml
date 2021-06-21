@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60c2c210-b2eb-496a-994d-e9bfa2bb501e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Function.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Function.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/parser/FuncParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/parser/FuncParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/ReturnExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/ReturnExpr.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +31,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager" selected="Application.NPLangCompiler">
     <configuration name="LexerRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -92,7 +91,7 @@
       <workItem from="1624094081426" duration="109000" />
       <workItem from="1624238055845" duration="37000" />
       <workItem from="1624238165337" duration="299000" />
-      <workItem from="1624238589230" duration="4950000" />
+      <workItem from="1624238589230" duration="5292000" />
     </task>
     <servers />
   </component>
