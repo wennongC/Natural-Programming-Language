@@ -45,6 +45,7 @@ public class Pronoun extends ASTList {
         }
         else if (node instanceof Invoke) {
             res = ((Invoke) node).compiled_code;
+            node.parent().do_not_display();
         } else if (node instanceof Function) {
             res = ((Function) node).functionName();
         }
