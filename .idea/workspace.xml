@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="60c2c210-b2eb-496a-994d-e9bfa2bb501e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Pronoun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Pronoun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/Sentence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/Sentence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/ast/basic/ASTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NPLang/CodeDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NPLang/CodeDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +103,7 @@
       <workItem from="1624094081426" duration="109000" />
       <workItem from="1624238055845" duration="37000" />
       <workItem from="1624238165337" duration="299000" />
-      <workItem from="1624238589230" duration="12712000" />
+      <workItem from="1624238589230" duration="15305000" />
     </task>
     <servers />
   </component>

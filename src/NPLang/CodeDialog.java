@@ -1,13 +1,11 @@
 package NPLang;
+import java.awt.*;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 
 public class CodeDialog extends Reader {
     private String buffer = null;
@@ -36,9 +34,11 @@ public class CodeDialog extends Reader {
     protected void print(String s) { System.out.println(s); }
     public void close() throws IOException {}
     protected String showDialog() {
+        UIManager.put("OptionPane.cancelButtonText", "Terminate");
+        UIManager.put("OptionPane.okButtonText", "Compile");
         JTextArea area = new JTextArea(20, 40);
         JScrollPane pane = new JScrollPane(area);
-        int result = JOptionPane.showOptionDialog(null, pane, "Input",
+        int result = JOptionPane.showOptionDialog(null, pane, "NPLang Compiler (for typed Natural Language)",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE,
                 null, null, null);
